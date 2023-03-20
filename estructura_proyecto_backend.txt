@@ -1,0 +1,224 @@
+Listado de rutas de carpetas para el volumen DATA
+El número de serie del volumen es 9A23-DE6E
+D:.
+|   .classpath
+|   .gitignore
+|   .project
+|   estructura_proyecto_backend.txt
+|   HELP.md
+|   mvnw
+|   mvnw.cmd
+|   pom.xml
+|   
++---.mvn
+|   \---wrapper
+|           maven-wrapper.jar
+|           maven-wrapper.properties
+|           
++---.settings
+|       org.eclipse.core.resources.prefs
+|       org.eclipse.jdt.apt.core.prefs
+|       org.eclipse.jdt.core.prefs
+|       org.eclipse.m2e.core.prefs
+|       org.springframework.ide.eclipse.prefs
+|       
++---src
+|   +---main
+|   |   +---java
+|   |   |   \---com
+|   |   |       \---indra
+|   |   |           \---chat
+|   |   |               |   ChatAppBackendApplication.java
+|   |   |               |   
+|   |   |               +---config
+|   |   |               |       SwaggerConfig.java
+|   |   |               |       WebSocketConfig.java
+|   |   |               |       
+|   |   |               +---controller
+|   |   |               |       AuthenticationController.java
+|   |   |               |       MessageController.java
+|   |   |               |       RegistrationController.java
+|   |   |               |       RoomController.java
+|   |   |               |       WebSocketController.java
+|   |   |               |       
+|   |   |               +---dto
+|   |   |               |   +---request
+|   |   |               |   |       ChatMessage.java
+|   |   |               |   |       CreateRoomRequest.java
+|   |   |               |   |       LoginRequest.java
+|   |   |               |   |       MessageRequest.java
+|   |   |               |   |       SignupRequest.java
+|   |   |               |   |       UserRequest.java
+|   |   |               |   |       
+|   |   |               |   \---response
+|   |   |               |           JwtResponse.java
+|   |   |               |           MessageResponse.java
+|   |   |               |           RoomResponse.java
+|   |   |               |           UserResponse.java
+|   |   |               |           
+|   |   |               +---entity
+|   |   |               |       Message.java
+|   |   |               |       Role.java
+|   |   |               |       RoleName.java
+|   |   |               |       Room.java
+|   |   |               |       User.java
+|   |   |               |       
+|   |   |               +---exception
+|   |   |               |       ResourceNotFoundException.java
+|   |   |               |       UserNotFoundException.java
+|   |   |               |       
+|   |   |               +---model
+|   |   |               |       AuditModel.java
+|   |   |               |       ChatMessage.java
+|   |   |               |       ChatRoom.java
+|   |   |               |       ERole.java
+|   |   |               |       Role.java
+|   |   |               |       RoleName.java
+|   |   |               |       Room.java
+|   |   |               |       User.java
+|   |   |               |       
+|   |   |               +---repository
+|   |   |               |       MessageRepository.java
+|   |   |               |       RoleRepository.java
+|   |   |               |       RoomRepository.java
+|   |   |               |       UserRepository.java
+|   |   |               |       UserRepositoryCustom.java
+|   |   |               |       UserRepositoryImpl.java
+|   |   |               |       
+|   |   |               +---security
+|   |   |               |   +---jwt
+|   |   |               |   |       JwtUtils.java
+|   |   |               |   |       
+|   |   |               |   +---model
+|   |   |               |   |       UserPrincipal.java
+|   |   |               |   |       
+|   |   |               |   \---service
+|   |   |               |           CustomUserDetailsService.java
+|   |   |               |           UserDetailsImpl.java
+|   |   |               |           UserDetailsServiceImpl.java
+|   |   |               |           
+|   |   |               \---service
+|   |   |                   |   MessageService.java
+|   |   |                   |   RoleService.java
+|   |   |                   |   RoleServiceImpl.java
+|   |   |                   |   RoomService.java
+|   |   |                   |   RoomServiceImpl.java
+|   |   |                   |   UserDetailsServiceImpl.java
+|   |   |                   |   UserService.java
+|   |   |                   |   UserServiceImpl.java
+|   |   |                   |   
+|   |   |                   \---impl
+|   |   \---resources
+|   |       |   application.properties
+|   |       |   
+|   |       +---static
+|   |       \---templates
+|   \---test
+|       \---java
+|           \---com
+|               \---indra
+|                   \---chat
+|                           ChatAppBackendApplicationTests.java
+|                           
+\---target
+    +---classes
+    |   |   application.properties
+    |   |   
+    |   +---com
+    |   |   \---indra
+    |   |       \---chat
+    |   |           |   ChatAppBackendApplication.class
+    |   |           |   
+    |   |           +---config
+    |   |           |       SwaggerConfig.class
+    |   |           |       WebSocketConfig.class
+    |   |           |       
+    |   |           +---controller
+    |   |           |       AuthenticationController.class
+    |   |           |       MessageController.class
+    |   |           |       RegistrationController.class
+    |   |           |       RoomController.class
+    |   |           |       WebSocketController.class
+    |   |           |       
+    |   |           +---dto
+    |   |           |   +---request
+    |   |           |   |       ChatMessage.class
+    |   |           |   |       CreateRoomRequest.class
+    |   |           |   |       LoginRequest.class
+    |   |           |   |       MessageRequest.class
+    |   |           |   |       SignupRequest.class
+    |   |           |   |       UserRequest.class
+    |   |           |   |       
+    |   |           |   \---response
+    |   |           |           JwtResponse.class
+    |   |           |           MessageResponse.class
+    |   |           |           RoomResponse.class
+    |   |           |           UserResponse.class
+    |   |           |           
+    |   |           +---entity
+    |   |           |       Message.class
+    |   |           |       Role.class
+    |   |           |       RoleName.class
+    |   |           |       Room.class
+    |   |           |       User.class
+    |   |           |       
+    |   |           +---exception
+    |   |           |       ResourceNotFoundException.class
+    |   |           |       UserNotFoundException.class
+    |   |           |       
+    |   |           +---model
+    |   |           |       AuditModel.class
+    |   |           |       ChatMessage.class
+    |   |           |       ChatRoom.class
+    |   |           |       ERole.class
+    |   |           |       Role.class
+    |   |           |       RoleName.class
+    |   |           |       Room.class
+    |   |           |       User.class
+    |   |           |       
+    |   |           +---repository
+    |   |           |       MessageRepository.class
+    |   |           |       RoleRepository.class
+    |   |           |       RoomRepository.class
+    |   |           |       UserRepository.class
+    |   |           |       UserRepositoryCustom.class
+    |   |           |       UserRepositoryImpl.class
+    |   |           |       
+    |   |           +---security
+    |   |           |   +---jwt
+    |   |           |   |       JwtUtils.class
+    |   |           |   |       
+    |   |           |   +---model
+    |   |           |   |       UserPrincipal.class
+    |   |           |   |       
+    |   |           |   \---service
+    |   |           |           CustomUserDetailsService.class
+    |   |           |           UserDetailsImpl.class
+    |   |           |           UserDetailsServiceImpl.class
+    |   |           |           
+    |   |           \---service
+    |   |               |   MessageService.class
+    |   |               |   RoleService.class
+    |   |               |   RoleServiceImpl.class
+    |   |               |   RoomService.class
+    |   |               |   RoomServiceImpl.class
+    |   |               |   UserDetailsServiceImpl.class
+    |   |               |   UserService.class
+    |   |               |   UserServiceImpl.class
+    |   |               |   
+    |   |               \---impl
+    |   \---META-INF
+    |       |   MANIFEST.MF
+    |       |   
+    |       \---maven
+    |           \---com.indra
+    |               \---chat-app-backend
+    |                       pom.properties
+    |                       pom.xml
+    |                       
+    \---test-classes
+        \---com
+            \---indra
+                \---chat
+                        ChatAppBackendApplicationTests.class
+                        
