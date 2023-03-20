@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.indra.chat.dto.request.LoginRequest;
 import com.indra.chat.dto.response.JwtResponse;
-import com.indra.chat.dto.response.MessageResponse;
 import com.indra.chat.security.jwt.JwtUtils;
 import com.indra.chat.security.service.UserDetailsImpl;
 
