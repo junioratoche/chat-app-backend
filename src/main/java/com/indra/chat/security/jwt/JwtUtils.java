@@ -26,8 +26,6 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import java.lang.IllegalArgumentException;
 
-
-
 @Component
 public class JwtUtils {
 
@@ -53,6 +51,14 @@ public class JwtUtils {
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(SignatureAlgorithm.HS512, getSigningKey())
                 .compact();
+    }
+
+    public String getUsernameFromJwtToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(getSigningKey())
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 
     // ... (other methods in the class)
