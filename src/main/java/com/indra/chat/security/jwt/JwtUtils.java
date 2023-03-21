@@ -17,11 +17,15 @@ import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
 
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.UnsupportedJwtException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.jsonwebtoken.security.SignatureException;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.UnsupportedJwtException;
+import java.lang.IllegalArgumentException;
+
 
 
 @Component
