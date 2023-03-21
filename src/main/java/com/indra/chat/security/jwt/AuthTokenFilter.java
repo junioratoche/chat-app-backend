@@ -12,7 +12,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.filter.OncePerRequestFilter;
 import com.indra.chat.security.service.UserDetailsServiceImpl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class AuthTokenFilter extends OncePerRequestFilter {
+
+    private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
     @Autowired
     private JwtUtils jwtUtils;
