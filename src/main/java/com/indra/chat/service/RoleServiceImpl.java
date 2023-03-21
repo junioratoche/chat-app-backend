@@ -1,9 +1,8 @@
 package com.indra.chat.service;
 
 import com.indra.chat.entity.Role;
-import com.indra.chat.entity.RoleName;
+import com.indra.chat.model.RoleName;
 import com.indra.chat.exception.ResourceNotFoundException;
-import com.indra.chat.model.ERole;
 import com.indra.chat.repository.RoleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +23,11 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role findByName(RoleName roleName) {
-        ERole eRole = null;
+        RoleName eRole = null;
         if (roleName == RoleName.ROLE_USER) {
-            eRole = ERole.ROLE_USER;
+            eRole = RoleName.ROLE_USER;
         } else if (roleName == RoleName.ROLE_ADMIN) {
-            eRole = ERole.ROLE_ADMIN;
+            eRole = RoleName.ROLE_ADMIN;
         } else {
             throw new IllegalArgumentException("Invalid role name: " + roleName);
         }

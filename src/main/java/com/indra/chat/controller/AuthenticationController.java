@@ -13,14 +13,20 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.indra.chat.dto.request.LoginRequest;
+import com.indra.chat.dto.request.SignupRequest;
 import com.indra.chat.dto.response.JwtResponse;
+import com.indra.chat.dto.response.MessageResponse;
 import com.indra.chat.security.jwt.JwtUtils;
 import com.indra.chat.security.service.UserDetailsImpl;
+import com.indra.chat.service.UserService;
+
 
 @RestController
+@RequestMapping("/api/auth") // Agrega este RequestMapping para definir la ruta base de la clase
 public class AuthenticationController {
 
 	@Autowired
@@ -28,6 +34,9 @@ public class AuthenticationController {
 
 	@Autowired
 	private JwtUtils jwtUtils;
+	
+	@Autowired
+    private UserService userService;
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -47,4 +56,14 @@ public class AuthenticationController {
 		return ResponseEntity.ok(
 				new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
 	}
+	
+	@PostMapping("/signup")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+        try {
+            userService.registerUser(signUpRequest);
+            return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
+    }
 }

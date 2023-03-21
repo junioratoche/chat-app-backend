@@ -1,8 +1,9 @@
 package com.indra.chat.dto.request;
 
-import java.util.Set;
+import com.indra.chat.model.RoleName;
 
 import javax.validation.constraints.*;
+import java.util.Set;
 
 public class SignupRequest {
     @NotBlank
@@ -14,7 +15,7 @@ public class SignupRequest {
     @Email
     private String email;
 
-    private Set<String> role;
+    private Set<RoleName> roles;
 
     @NotBlank
     @Size(min = 6, max = 40)
@@ -36,12 +37,12 @@ public class SignupRequest {
         this.email = email;
     }
 
-    public Set<String> getRole() {
-        return role;
+    public Set<RoleName> getRoles() {
+        return roles;
     }
 
-    public void setRole(Set<String> role) {
-        this.role = role;
+    public void setRoles(Set<RoleName> roles) {
+        this.roles = roles;
     }
 
     public String getPassword() {

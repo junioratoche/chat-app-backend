@@ -29,4 +29,8 @@ public class UserRequest {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public UserRequest(String username) {
+        this.username = username;
+    }
 }

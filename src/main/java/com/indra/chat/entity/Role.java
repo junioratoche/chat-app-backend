@@ -1,8 +1,11 @@
 package com.indra.chat.entity;
 
-import org.hibernate.annotations.NaturalId;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
+
+import com.indra.chat.model.RoleName;
 
 @Entity
 @Table(name = "roles")
@@ -12,11 +15,14 @@ public class Role {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @NaturalId
-    @Column(length = 60)
+    @Column(length = 20)
     private RoleName name;
 
-    public Role() {}
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users = new HashSet<>();
+
+    public Role() {
+    }
 
     public Role(RoleName name) {
         this.name = name;
@@ -36,5 +42,13 @@ public class Role {
 
     public void setName(RoleName name) {
         this.name = name;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

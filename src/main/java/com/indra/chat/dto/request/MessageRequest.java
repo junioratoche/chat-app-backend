@@ -6,6 +6,12 @@ public class MessageRequest {
     private UserRequest sender;
     private UserRequest receiver;
 
+ // Agrega este constructor
+    public MessageRequest(String content, String senderUsername) {
+        this.content = content;
+        this.sender = new UserRequest(senderUsername);
+    }
+
     public Long getRoomId() {
         return roomId;
     }

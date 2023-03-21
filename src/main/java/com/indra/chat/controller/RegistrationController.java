@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.indra.chat.dto.request.SignupRequest;
 import com.indra.chat.dto.response.MessageResponse;
 import com.indra.chat.entity.Role;
-import com.indra.chat.model.ERole;
+import com.indra.chat.model.RoleName;
 import com.indra.chat.entity.User;
 import com.indra.chat.exception.ResourceNotFoundException;
 import com.indra.chat.repository.RoleRepository;
@@ -50,33 +50,22 @@ public class RegistrationController {
         User user = new User(signUpRequest.getUsername(), passwordEncoder.encode(signUpRequest.getPassword()),
                 signUpRequest.getEmail());
 
-        Set<String> strRoles = signUpRequest.getRole();
+        Set<RoleName> roleNames = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
-        if (strRoles == null) {
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER);
+        if (roleNames == null || roleNames.isEmpty()) {
+            Role userRole = roleRepository.findByName(RoleName.ROLE_USER);
             if(userRole == null){
-                throw new ResourceNotFoundException("Role", "name", ERole.ROLE_USER.name());
+                throw new ResourceNotFoundException("Role", "name", RoleName.ROLE_USER.name());
             }
             roles.add(userRole);
         } else {
-            strRoles.forEach(role -> {
-                switch (role) {
-                    case "admin":
-                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN);
-                        if(adminRole == null){
-                            throw new ResourceNotFoundException("Role", "name", ERole.ROLE_ADMIN.name());
-                        }
-                        roles.add(adminRole);
-                        break;
-                    default:
-                        Role userRole = roleRepository.findByName(ERole.ROLE_USER);
-                        if(userRole == null){
-                            throw new ResourceNotFoundException("Role", "name", ERole.ROLE_USER.name());
-                        }
-                        roles.add(userRole);
-                        break;
+            roleNames.forEach(roleName -> {
+                Role role = roleRepository.findByName(roleName);
+                if (role == null) {
+                    throw new ResourceNotFoundException("Role", "name", roleName.name());
                 }
+                roles.add(role);
             });
         }
 

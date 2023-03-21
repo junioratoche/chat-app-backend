@@ -1,11 +1,8 @@
 package com.indra.chat.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import com.indra.chat.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
@@ -15,10 +12,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findById(long id);
 
-    User findByEmail(String email);   
+    User findByEmail(String email);
 
     User save(User user);
 
     void delete(User user);
 }
-

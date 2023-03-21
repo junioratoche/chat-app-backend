@@ -1,9 +1,11 @@
 package com.indra.chat.service;
 
+import com.indra.chat.dto.request.SignupRequest;
 import com.indra.chat.entity.User;
 import com.indra.chat.exception.ResourceNotFoundException;
 import com.indra.chat.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,33 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Override
+    public void registerUser(SignupRequest signUpRequest) {
+        if (existsByUsername(signUpRequest.getUsername()) || existsByEmail(signUpRequest.getEmail())) {
+            throw new IllegalArgumentException("Error: Username or email already exists.");
+        }
+
+        User newUser = new User();
+        newUser.setUsername(signUpRequest.getUsername());
+        newUser.setEmail(signUpRequest.getEmail());
+        newUser.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+
+        save(newUser);
+    }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
 
     @Override
     public User save(User user) {
@@ -26,40 +55,41 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
-
-    @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    
-    @Override
-    public User findById(Long id) {
-        User user = userRepository.findById(id);
+        User user = userRepository.findByUsername(username);
         if (user == null) {
-            throw new ResourceNotFoundException("User", "id", id);
+            throw new ResourceNotFoundException("User not found with username: " + username);
         }
         return user;
     }
 
+    @Override
+    public User findByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new ResourceNotFoundException("User not found with email: " + email);
+        }
+        return user;
+    }
+
+    @Override
+    public User findById(Long id) {
+        User user = userRepository.findById(id);
+        if (user == null) {
+            throw new ResourceNotFoundException("User not found with id: " + id);
+        }
+        return user;
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userRepository.save(user);
+    }
 
     @Override
     public void delete(User user) {
         userRepository.delete(user);
     }
 
-    @Override
-    public boolean existsByUsername(String username) {
-        return userRepository.existsByUsername(username);
-    }
-
-    @Override
-    public boolean existsByEmail(String email) {
-        return userRepository.existsByEmail(email);
-    }
-    
     @Override
     public User getUserById(Long id) {
         return findById(id);
