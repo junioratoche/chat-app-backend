@@ -2,7 +2,7 @@ package com.indra.chat.config;
 
 import java.util.Properties;
 
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManagerFactory; // Agregar esta importación
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -62,9 +62,9 @@ public class JpaConfig {
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+    public PlatformTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory);
+        transactionManager.setEntityManagerFactory(entityManagerFactory.getObject());
         return transactionManager;
     }
 }

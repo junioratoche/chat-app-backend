@@ -4,7 +4,7 @@ import com.indra.chat.dto.response.MessageResponse;
 import com.indra.chat.dto.request.SignupRequest;
 import com.indra.chat.entity.Role;
 import com.indra.chat.entity.User;
-import com.indra.chat.model.RoleName;
+import com.indra.chat.entity.RoleName;
 import com.indra.chat.repository.RoleRepository;
 import com.indra.chat.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,10 +24,7 @@ import java.util.Collections;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
