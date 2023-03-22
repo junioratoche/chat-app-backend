@@ -14,7 +14,8 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
+    	<spring.version>5.3.4</spring.version>
 		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
 		<springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
 		<hibernate.version>5.6.4.Final</hibernate.version>
