@@ -1,9 +1,14 @@
 package com.indra.chat.entity;
 
-import javax.persistence.*;
-import com.indra.chat.model.AuditModel;
 import java.time.Instant;
 import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "messages")

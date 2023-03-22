@@ -1,24 +1,13 @@
 package com.indra.chat.dto.request;
 
+import javax.validation.constraints.NotBlank;
+
 public class MessageRequest {
-    private Long roomId;
+    @NotBlank(message = "Content is required")
     private String content;
     private UserRequest sender;
     private UserRequest receiver;
-
- // Agrega este constructor
-    public MessageRequest(String content, String senderUsername) {
-        this.content = content;
-        this.sender = new UserRequest(senderUsername);
-    }
-
-    public Long getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
-    }
+    private Long roomId;
 
     public String getContent() {
         return content;
@@ -42,5 +31,13 @@ public class MessageRequest {
 
     public void setReceiver(UserRequest receiver) {
         this.receiver = receiver;
+    }
+
+    public Long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
 }

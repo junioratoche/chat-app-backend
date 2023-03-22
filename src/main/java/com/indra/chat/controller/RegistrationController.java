@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.indra.chat.dto.request.SignupRequest;
 import com.indra.chat.dto.response.MessageResponse;
-import com.indra.chat.entity.Role;
-import com.indra.chat.model.RoleName;
+import com.indra.chat.entity.*;
 import com.indra.chat.entity.User;
 import com.indra.chat.exception.ResourceNotFoundException;
 import com.indra.chat.repository.RoleRepository;

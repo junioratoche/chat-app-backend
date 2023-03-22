@@ -1,7 +1,6 @@
 package com.indra.chat.service;
 
-import com.indra.chat.entity.Role;
-import com.indra.chat.model.RoleName;
+import com.indra.chat.entity.*;
 import com.indra.chat.exception.ResourceNotFoundException;
 import com.indra.chat.repository.RoleRepository;
 

@@ -1,35 +1,25 @@
 package com.indra.chat.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.indra.chat.model.AuditModel;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.*;
+
 @Entity
 @Table(name = "rooms")
-public class Room extends AuditModel {
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(max = 100)
+    @Column(name = "name")
     private String name;
 
-    @Size(max = 250)
+    @Column(name = "description")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User createdBy;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -38,9 +28,7 @@ public class Room extends AuditModel {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users = new HashSet<>();
 
-    // Constructors, getters and setters
     public Room() {
-
     }
 
     public Room(String name, String description, User createdBy) {
@@ -72,12 +60,10 @@ public class Room extends AuditModel {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    @Override
-    public String getCreatedBy() {
-        return this.createdBy != null ? this.createdBy.getUsername() : null;
-    }
 
+    public User getCreatedBy() {
+        return createdBy;
+    }
 
     public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;

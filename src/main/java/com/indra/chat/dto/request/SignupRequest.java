@@ -1,6 +1,6 @@
 package com.indra.chat.dto.request;
 
-import com.indra.chat.model.RoleName;
+import com.indra.chat.entity.*;
 
 import javax.validation.constraints.*;
 import java.util.Set;

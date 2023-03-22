@@ -1,4 +1,4 @@
-package com.indra.chat.model;
+package com.indra.chat.entity;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -16,10 +16,10 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AuditModel implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id

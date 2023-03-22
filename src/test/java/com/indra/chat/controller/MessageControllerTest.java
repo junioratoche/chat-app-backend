@@ -1,8 +1,9 @@
 package com.indra.chat.controller;
 
 import com.indra.chat.dto.request.MessageRequest;
-import com.indra.chat.service.MessageService;
+import com.indra.chat.dto.request.UserRequest;
 import com.indra.chat.entity.Message;
+import com.indra.chat.service.MessageService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -18,10 +20,8 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
 class MessageControllerTest {
@@ -60,14 +60,19 @@ class MessageControllerTest {
 
     @Test
     void saveMessageTest() throws Exception {
-        MessageRequest messageRequest = new MessageRequest("Hello", "John");
+        MessageRequest messageRequest = new MessageRequest();
+        messageRequest.setContent("Hello");
+        messageRequest.setSender(new UserRequest("John"));
+        messageRequest.setReceiver(new UserRequest("Jane"));
+        messageRequest.setRoomId(1L);
+
         Message savedMessage = new Message();
         savedMessage.setContent("Hello");
 
         when(messageService.save(any(MessageRequest.class))).thenReturn(savedMessage);
 
         mockMvc.perform(post("/api/messages")
-                .contentType("application/json")
+                .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(messageRequest)))
                 .andExpect(status().isCreated())
                 .andExpect(content().json(objectMapper.writeValueAsString(savedMessage)));

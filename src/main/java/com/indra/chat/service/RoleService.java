@@ -2,8 +2,7 @@ package com.indra.chat.service;
 
 import java.util.List;
 
-import com.indra.chat.entity.Role;
-import com.indra.chat.model.RoleName;
+import com.indra.chat.entity.*;
 
 public interface RoleService {
     List<Role> getAllRoles();

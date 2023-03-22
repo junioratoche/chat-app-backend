@@ -1,21 +1,26 @@
 package com.indra.chat.model;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public class ChatMessage {
-
+    private MessageType type;
     private String content;
     private String sender;
-    private LocalDateTime timestamp;
+    private String receiver;
+    private Instant sentAt;
 
-    public ChatMessage() {
-        timestamp = LocalDateTime.now();
+    public enum MessageType {
+        CHAT,
+        JOIN,
+        LEAVE
     }
 
-    public ChatMessage(String content, String sender) {
-        this.content = content;
-        this.sender = sender;
-        this.timestamp = LocalDateTime.now();
+    public MessageType getType() {
+        return type;
+    }
+
+    public void setType(MessageType type) {
+        this.type = type;
     }
 
     public String getContent() {
@@ -34,11 +39,19 @@ public class ChatMessage {
         this.sender = sender;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public Instant getSentAt() {
+        return sentAt;
+    }
+
+    public void setSentAt(Instant sentAt) {
+        this.sentAt = sentAt;
     }
 }

@@ -5,8 +5,6 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.indra.chat.model.RoleName;
-
 @Entity
 @Table(name = "roles")
 public class Role {
