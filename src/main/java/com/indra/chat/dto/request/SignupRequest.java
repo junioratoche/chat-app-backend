@@ -15,11 +15,17 @@ public class SignupRequest {
     @Email
     private String email;
 
-    private Set<RoleName> roles;
-
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+    
+    @NotBlank
+    @Size(max = 50)
+    private String name;
+
+    private Set<RoleName> roles;
+
+    // getters and setters
 
     public String getUsername() {
         return username;
@@ -37,19 +43,27 @@ public class SignupRequest {
         this.email = email;
     }
 
-    public Set<RoleName> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<RoleName> roles) {
-        this.roles = roles;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<RoleName> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleName> roles) {
+        this.roles = roles;
     }
 }

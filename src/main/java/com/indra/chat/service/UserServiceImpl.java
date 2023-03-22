@@ -73,11 +73,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
-        User user = userRepository.findById(id);
-        if (user == null) {
-            throw new ResourceNotFoundException("User not found with id: " + id);
-        }
-        return user;
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
     }
 
     @Override
@@ -95,3 +91,4 @@ public class UserServiceImpl implements UserService {
         return findById(id);
     }
 }
+

@@ -67,6 +67,7 @@ public class RegistrationControllerTest {
         signupRequest.setRoles(Collections.singleton(RoleName.ROLE_USER));
 
         User savedUser = new User("John Doe", "JohnDoe", "john.doe@example.com", "password123");
+
         Role userRole = new Role(RoleName.ROLE_USER);
         savedUser.setRoles(Collections.singleton(userRole));
 

@@ -35,8 +35,8 @@ public class RegistrationController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-    	
-    	System.out.println("Ingresó a REST");
+
+        System.out.println("Ingresó a REST");
 
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
@@ -47,8 +47,7 @@ public class RegistrationController {
         }
 
         // Create new user's account
-        User user = new User(signUpRequest.getUsername(), passwordEncoder.encode(signUpRequest.getPassword()),
-                signUpRequest.getEmail());
+        User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(), passwordEncoder.encode(signUpRequest.getPassword()));
 
         Set<RoleName> roleNames = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
@@ -74,4 +73,5 @@ public class RegistrationController {
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
+
 }
