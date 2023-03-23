@@ -28,7 +28,7 @@ import com.indra.chat.service.UserService;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthenticationController {
-
+	
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -40,7 +40,7 @@ public class AuthenticationController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-    	Logger logger = Logger.getLogger(RegistrationController.class.getName());
+    	Logger logger = Logger.getLogger(AuthenticationController.class.getName());
     	logger.info("AuthenticateUser user...");
 
         Authentication authentication = authenticationManager.authenticate(

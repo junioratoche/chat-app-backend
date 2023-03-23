@@ -1,8 +1,7 @@
 package com.indra.chat.repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +14,6 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     EntityManager entityManager;
 
     @Override
-    @Transactional
     public void detach(User user) {
         entityManager.detach(user);
     }
