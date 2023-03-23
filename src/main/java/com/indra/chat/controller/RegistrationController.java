@@ -2,6 +2,7 @@ package com.indra.chat.controller;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
@@ -34,6 +35,9 @@ public class RegistrationController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+    	
+        Logger logger = Logger.getLogger(RegistrationController.class.getName());
+        logger.info("Registering new user...");
 
         System.out.println("Ingresó a REST");
 

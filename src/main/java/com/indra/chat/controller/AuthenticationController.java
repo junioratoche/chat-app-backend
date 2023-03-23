@@ -1,6 +1,7 @@
 package com.indra.chat.controller;
 
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -39,6 +40,8 @@ public class AuthenticationController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    	Logger logger = Logger.getLogger(RegistrationController.class.getName());
+    	logger.info("AuthenticateUser user...");
 
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
